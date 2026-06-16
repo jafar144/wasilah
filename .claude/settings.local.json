@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node --check src/services/personService.js)",
+      "Bash(node -e \"const {neo4j}=require\\('./src/db/connection'\\); console.log\\('neo4j.int is', typeof neo4j.int\\); console.log\\('sample:', neo4j.int\\(25\\).toString\\(\\)\\);\")",
+      "Bash(grep -v \"^\\\\[connection\\\\]\\\\|Kredensial\\\\|cp .env\\\\|^$\")",
+      "Bash(node --check src/routes/people.js)"
+    ]
+  }
+}
