@@ -36,22 +36,37 @@ router.get('/', (req, res) => {
 </style></head><body>
 <h2>List Khataman bulan ini</h2>
 <pre id="teks">${escapeHtml(text)}</pre>
-<button id="salin">📋 Salin teks</button>
+<button id="bagikan">📤 Bagikan ke WhatsApp</button>
 <div class="ok" id="status"></div>
 <script>
   const teks = document.getElementById('teks').textContent;
   const status = document.getElementById('status');
-  document.getElementById('salin').addEventListener('click', async () => {
+
+  async function salinClipboard() {
     try {
       await navigator.clipboard.writeText(teks);
-      status.textContent = '✅ Tersalin! Tinggal tempel ke grup WhatsApp.';
     } catch (e) {
-      // Fallback untuk browser/HTTP tanpa Clipboard API.
       const ta = document.createElement('textarea');
       ta.value = teks; document.body.appendChild(ta); ta.select();
       document.execCommand('copy'); ta.remove();
-      status.textContent = '✅ Tersalin! Tinggal tempel ke grup WhatsApp.';
     }
+    status.textContent = '✅ Tersalin! Tinggal tempel ke grup WhatsApp.';
+  }
+
+  document.getElementById('bagikan').addEventListener('click', async () => {
+    // Web Share API: di HP memunculkan menu share bawaan -> pilih WhatsApp.
+    if (navigator.share) {
+      try {
+        await navigator.share({ text: teks });
+        status.textContent = '';
+        return;
+      } catch (e) {
+        // User membatalkan share, atau gagal -> jatuh ke salin.
+        if (e && e.name === 'AbortError') { status.textContent = ''; return; }
+      }
+    }
+    // Fallback (desktop / tanpa Web Share): salin ke clipboard.
+    await salinClipboard();
   });
 </script>
 </body></html>`);

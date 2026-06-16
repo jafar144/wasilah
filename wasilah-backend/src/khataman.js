@@ -2,14 +2,18 @@
 
 // Daftar peserta khataman (30 nama = 30 juz). Urutan ini yang dirotasi tiap bulan.
 const NAMES = [
-  'Aliyah', 'Epa', 'Abubakar', 'Lubna', 'Zaki', 'Wasilah', 'Sakinah', 'Reza',
-  'Farhan', 'Patema', 'Hasyim', "Ja'far", 'Muhammad', 'Zainab', 'Shammy',
-  'Taufik', 'Chila', 'Fadlia', 'Aluyah', 'Hani', 'Wanja', 'Aliyah Alkaf', 'Nisa',
-  'Ibu Ayya', 'Hanif', 'Ica', 'Ima', 'Fauziah', 'Tika', 'Aminah',
+  'Aliyah', 'Zulfa', 'Abubakar', 'Lubna', 'Zaki', 'Wansila', 'Sakinah', 'Ridho',
+  'Farhan', 'Fatema', 'Hasyim', "Ja'far", 'Muhammad', 'Zainab', 'Shammy',
+  'Taufik', 'Wasila A', 'Fadlia', 'Aluyah', 'Hanni', 'Khodijah', 'Aliyah Alkaf', 'Rahma',
+  'Anisah', 'Hanif', 'Nafisah', 'Fatimah', 'Fauziah', 'Atika', 'Aminah',
 ];
 
-// Bulan acuan rotasi (index 0 = Januari ... 9 = Oktober = shift 0).
-const ROTATION_OFFSET = 9;
+// Acuan rotasi: Juni 2026, Juz 1 dimulai dari indeks 22 (Rahma).
+// Tiap bulan berikutnya maju 1 orang dan berputar penuh tiap 30 bulan
+// (kontinu antar-tahun, bukan reset tiap Januari — karena ada 30 nama).
+const ANCHOR_YEAR = 2026;
+const ANCHOR_MONTH = 6; // Juni (1-12)
+const ANCHOR_SHIFT = 22;
 
 const BULAN_ID = [
   'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
@@ -38,7 +42,8 @@ function generateList(when) {
   const { year, month } = when || jakartaNow();
   const monthIndex = month - 1; // 0-11
 
-  const shift = (((monthIndex - ROTATION_OFFSET) % NAMES.length) + NAMES.length) % NAMES.length;
+  const monthsSince = (year - ANCHOR_YEAR) * 12 + (monthIndex - (ANCHOR_MONTH - 1));
+  const shift = (((ANCHOR_SHIFT + monthsSince) % NAMES.length) + NAMES.length) % NAMES.length;
   const rotated = [...NAMES.slice(shift), ...NAMES.slice(0, shift)];
 
   const lastDay = new Date(year, month, 0).getDate();
