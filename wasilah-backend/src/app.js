@@ -6,6 +6,7 @@ const cors = require('cors');
 
 const peopleRoutes = require('./routes/people');
 const relationshipRoutes = require('./routes/relationship');
+const khatamanRoutes = require('./routes/khataman');
 const { verifyConnection, closeDriver } = require('./db/connection');
 
 const app = express();
@@ -19,6 +20,7 @@ app.get('/health', (req, res) => res.json({ status: 'ok', service: 'wasilah-back
 
 app.use('/api/people', peopleRoutes);
 app.use('/api/relationship', relationshipRoutes);
+app.use('/khataman', khatamanRoutes);
 
 // 404 handler.
 app.use((req, res) => {

@@ -1,12 +1,16 @@
 class AppConfig {
   /// Base URL backend.
   ///
-  /// - Android emulator: gunakan 10.0.2.2 (alias localhost mesin host).
-  /// - iOS simulator   : gunakan localhost / 127.0.0.1.
-  /// - Device fisik    : ganti dengan IP laptop/server di jaringan yang sama,
-  ///                     mis. 'http://192.168.1.10:3000/api'.
-  static const String baseUrl = 'http://10.0.2.2:3000/api';
+  /// - Production (Render): https://wasilah.onrender.com/api
+  /// - Lokal Android emulator: gunakan http://10.0.2.2:3000/api
+  /// - Lokal iOS simulator   : gunakan http://localhost:3000/api
+  /// - Lokal device fisik    : ganti dengan IP laptop di jaringan yang sama,
+  ///                           mis. 'http://192.168.1.10:3000/api'.
+  static const String baseUrl = 'https://wasilah.onrender.com/api';
 
   /// Timeout permintaan HTTP.
-  static const Duration requestTimeout = Duration(seconds: 10);
+  ///
+  /// Render free tier "tidur" setelah idle, request pertama bisa lambat
+  /// (cold start ~30-50 detik), jadi timeout dilonggarkan.
+  static const Duration requestTimeout = Duration(seconds: 60);
 }

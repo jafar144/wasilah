@@ -1,4 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Diperlukan agar aplikasi bisa memanggil backend (HTTP/HTTPS).
+         Tanpa ini, APK release tidak bisa terhubung ke server. -->
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:label="wasilah_app"
         android:name="${applicationName}"

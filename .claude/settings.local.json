@@ -4,7 +4,25 @@
       "Bash(node --check src/services/personService.js)",
       "Bash(node -e \"const {neo4j}=require\\('./src/db/connection'\\); console.log\\('neo4j.int is', typeof neo4j.int\\); console.log\\('sample:', neo4j.int\\(25\\).toString\\(\\)\\);\")",
       "Bash(grep -v \"^\\\\[connection\\\\]\\\\|Kredensial\\\\|cp .env\\\\|^$\")",
-      "Bash(node --check src/routes/people.js)"
+      "Bash(node --check src/routes/people.js)",
+      "Bash(node -e ' *)",
+      "Bash(node -e \"console.log\\(require\\('crypto'\\).randomBytes\\(24\\).toString\\('hex'\\)\\)\")",
+      "Bash(ls -la public/)",
+      "Bash(ls node_modules/whatsapp-web.js)",
+      "Bash(npm install *)",
+      "Bash(node -e \"console.log\\('whatsapp-web.js:', require\\('whatsapp-web.js/package.json'\\).version\\)\")",
+      "Bash(node -e \"console.log\\('wwebjs-mongo :', require\\('wwebjs-mongo/package.json'\\).version\\)\")",
+      "Bash(node -e \"try{console.log\\('archiver :', require\\('archiver/package.json'\\).version\\)}catch\\(e\\){console.log\\('archiver: TIDAK ADA'\\)}\")",
+      "Bash(node -e \"try{console.log\\('extract-zip :', require\\('extract-zip/package.json'\\).version\\)}catch\\(e\\){console.log\\('extract-zip: TIDAK ADA'\\)}\")",
+      "Bash(node -e \"try{require\\('fs-extra'\\);console.log\\('fs-extra OK'\\)}catch\\(e\\){console.log\\('fs-extra TIDAK ADA'\\)}\")",
+      "Bash(node -c src/mongoStore.js)",
+      "Bash(node -c src/index.js)",
+      "Bash(node -e \"const {PatchedMongoStore}=require\\('./src/mongoStore'\\); console.log\\('PatchedMongoStore load OK:', typeof PatchedMongoStore\\)\")",
+      "Bash(node -c src/khataman.js)",
+      "Bash(node -c src/routes/khataman.js)",
+      "Bash(node -c src/app.js)",
+      "Bash(cat /tmp/khataman_test.log 2>/dev/null | head -20; echo \"---\"; pgrep -fa \"src/app.js\" || echo \"\\(tidak ada proses app.js\\)\")",
+      "Read(//tmp/**)"
     ]
   }
 }
