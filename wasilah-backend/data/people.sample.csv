@@ -1,2 +1,6 @@
 id,name,gender,father_id,mother_id
-p24,Fatimatuzzahra,f,01a7f65a-ad16-48c5-ae7c-1a4e95582bf9,3e582164-f864-4d5c-84dd-5f7dd4a702ea
+p25,Abdullah Assegaf,m,,
+p29,Abdurrahman,m,,
+p26,Abidin,m,p29,
+p27,Muhammad,m,p26,
+p28,Abdurrahman,m,p26,

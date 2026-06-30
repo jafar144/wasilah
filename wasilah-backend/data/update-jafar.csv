@@ -1,0 +1,4 @@
+id,name,gender,father_id,mother_id
+ab5e8dae-cab4-490c-9e87-b0d343ecba0c,Jafar,m,p25,
+92062694-a9fc-4eef-b0fd-147a31b45180,Abdullah,m,p25,
+p29,Abdurrahman,m,92062694-a9fc-4eef-b0fd-147a31b45180,
